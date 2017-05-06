@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "description": "Backend of consert.live",
+  "version": "1.0.0",
+  "homepage": "consert.live",
+  "main": "src/",
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "scripts": {
+    "test": "npm run jshint && npm run mocha",
+    "jshint": "jshint src/. test/. --config",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "cors": "^2.8.3",
+    "feathers": "^2.1.1",
+    "feathers-authentication-refreshtoken": "^0.7.1-1.0",
+    "feathers-configuration": "^0.4.1",
+    "feathers-errors": "^2.7.1",
+    "feathers-hooks": "1.6.0",
+    "feathers-mongoose": "^5.1.0",
+    "feathers-rest": "^1.7.2",
+    "feathers-socketio": "^1.6.0",
+    "mongoose": "^4.9.7",
+    "passport": "^0.3.2",
+    "passport-spotify": "^0.3.1",
+    "rxjs": "^5.0.0-rc.1",
+    "serve-favicon": "^2.3.0",
+    "spotify-web-api-node": "^2.3.6",
+    "winston": "^2.3.0",
+    "youtube-api": "^2.0.4"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "jshint": "^2.9.4",
+    "mocha": "^3.3.0",
+    "request": "^2.78.0"
+  }
+}

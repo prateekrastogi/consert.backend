@@ -1,0 +1,19 @@
+{
+  "host": "bakendi-app.feathersjs.com",
+  "port": 80,
+  "mongodb": "DATABASE_URL",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "FEATHERS_AUTH_SECRET"
+    },
+    "local": false,
+    "spotify": {
+      "clientID": "your spotify client id",
+      "clientSecret": "your spotify client secret",
+      "permissions": {
+        "scope": ["user-read-email","user-read-private"]
+      }
+    }
+  }
+}
