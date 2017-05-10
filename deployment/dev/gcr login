@@ -1,1 +1,3 @@
-kubectl create secret docker-registry gke --docker-server=https://gcr.io --docker-username=consert-service-key.json --docker-password="$(gcloud auth print-access-token)" --docker-email=prtk6592@gmail.com
+
+set /p PASS=<gcr.json
+kubectl create secret docker-registry gke --docker-server=https://gcr.io --docker-username=_json_key --docker-password="%PASS%" --docker-email=prtk6592@gmail.com
