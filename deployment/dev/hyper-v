@@ -1,0 +1,5 @@
+With Admin Privileges-
+
+dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
+
+dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
