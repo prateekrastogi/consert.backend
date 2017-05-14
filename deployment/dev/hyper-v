@@ -5,3 +5,6 @@ dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
 
 For Enable:
 dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+
+
+minikube start --vm-driver="hyperv" --memory=4096 --hyperv-virtual-switch="consert" --v=7 --alsologtostderr
