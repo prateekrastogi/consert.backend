@@ -1,6 +1,6 @@
 {
-  "host": "localhost",
+  "host": "mongo",
   "port": 80,
-  "mongodb": "mongodb://localhost:27017/bakendi",
+  "mongodb": "mongodb://mongo:27017/bakendi",
   "public": "../public/"
 }
