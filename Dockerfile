@@ -30,6 +30,7 @@ RUN apk del git
 RUN apk del openssh
 
 #Finally set container parameters
-EXPOSE 80
+ENV NODE_ENV 'production'
+ENV PORT '80'
 RUN yarn install --production
 CMD ["node", "src/"]
