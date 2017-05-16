@@ -1,3 +1,0 @@
-
-set /p PASS=<gcr.json
-kubectl create secret docker-registry gke --docker-server=https://gcr.io --docker-username=_json_key --docker-password="%PASS%" --docker-email=prtk6592@gmail.com
