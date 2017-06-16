@@ -1,6 +1,0 @@
-{
-  "host": "consert-service",
-  "port": 80,
-  "mongodb": "mongodb://mongo:27017/bakendi",
-  "public": "../public/"
-}
