@@ -7,8 +7,8 @@
     "clientSecret": "d1f1a832f28d41c685eda422249da094",
     "callbackURL": "/auth/spotify/callback",
     "callbackPath": "/auth/spotify/callback",
-    "successRedirect": "/",
-    "failureRedirect": "/login",
+    "successRedirect": "http://localhost:3000/about",
+    "failureRedirect": "http://localhost:3000/login",
     "scope": ["playlist-read-private","playlist-read-collaborative","playlist-modify-public","playlist-modify-private","streaming","user-follow-modify","user-follow-read","user-library-read","user-library-modify","user-read-private","user-read-birthdate","user-read-email","user-top-read"],
     "failureFlash": true
   }
