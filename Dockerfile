@@ -1,35 +1,17 @@
 FROM node:8.1.2-alpine
 
-#Add git and openssh
-RUN apk add --no-cache git
-RUN apk add --no-cache openssh
+# Create app directory
+RUN mkdir -p /backend
+WORKDIR /backend
 
-# add custom ssh keys
-COPY ssh/ /root/.ssh/
+# Bundle app source
+COPY . /backend
 
-# Fixes permission if needed
-RUN chmod 600 /root/.ssh/*
+# Install app dependencies
+RUN npm install --production
 
-# Avoid first connection host confirmation
-RUN ssh-keyscan bitbucket.org > /root/.ssh/known_hosts
-
-#Clone git repo
-RUN git clone git@bitbucket.org:PrateekRastogi/frontend.git
-
-#Set up feathers
-WORKDIR /consert
-COPY . .
-RUN rm -rf /public/*
-
-#Copy contents of build from the cloned repo
-RUN cp -a ../frontend/build/. /public/
-
-#Remove cloned repo and tools
-RUN rm -rf ../frontend/
-RUN apk del git
-RUN apk del openssh
-
-#Finally set container parameters
+#Finally setting container parameters
 ENV NODE_ENV 'production'
-RUN yarn install --production
-CMD ["node", "src/"]
+ENV MONGODB_URL 'mongodb://mongo:27017/backend'
+EXPOSE 3100
+CMD [ "npm", "start" ]

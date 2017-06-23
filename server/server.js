@@ -8,13 +8,30 @@ var app = module.exports = loopback();
 // Create an instance of PassportConfigurator with the app instance
 var PassportConfigurator = require('loopback-component-passport').PassportConfigurator;
 var passportConfigurator = new PassportConfigurator(app);
-// Load the provider configurations
+// Load the provider configurations according to environment
 var config = {};
 try {
+  switch (app.get('env')) {
+    case 'production' :
+      config = require('../providers.json');
+      break;
+    default:
+      config = require('../providers.' + app.get('env') + 'json');
+
+  }
   config = require('../providers.json');
 } catch (err) {
-  console.error('Please configure your passport strategy in `providers.json`.');
-  process.exit(1);
+  // if not found, try the default file if is not production
+  if (app.get('env') != 'production') {
+    try {
+      config = require('../providers.json');
+    } catch (err) {
+      console.trace(err);
+      process.exit(1); // fatal
+    }
+  }
+  console.trace(err);
+  process.exit(1); // fatal
 }
 
 app.start = function() {

@@ -1,0 +1,12 @@
+{
+  "backend": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "${MONGODB_URL}",
+    "database": "backend",
+    "password": "",
+    "name": "backend",
+    "user": "",
+    "connector": "mongodb"
+  }
+}
