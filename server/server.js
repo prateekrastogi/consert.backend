@@ -13,13 +13,11 @@ var config = {};
 try {
   switch (app.get('env')) {
     case 'production' :
-      config = require('../providers.json');
+      config = require('../providers.' + app.get('env') + '.json');
       break;
     default:
-      config = require('../providers.' + app.get('env') + 'json');
-
+      config = require('../providers.json');
   }
-  config = require('../providers.json');
 } catch (err) {
   // if not found, try the default file if is not production
   if (app.get('env') != 'production') {
@@ -30,8 +28,6 @@ try {
       process.exit(1); // fatal
     }
   }
-  console.trace(err);
-  process.exit(1); // fatal
 }
 
 app.start = function() {
