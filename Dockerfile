@@ -9,6 +9,7 @@ COPY package.json package-lock.json providers.production.json /backend/
 COPY /client  /backend/client
 COPY /common  /backend/common
 COPY /server  /backend/server
+COPY /lib  /backend/lib
 
 # Install app dependencies
 RUN npm install --production
