@@ -22,6 +22,7 @@
     "apiVersion": "5.0",
     "refreshOn": ["save","create", "updateOrCreate"],
     "defaultSize": 50,
+    "log": "trace",
     "requestTimeout": 30000
   }
 }
