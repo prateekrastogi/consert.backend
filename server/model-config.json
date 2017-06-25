@@ -15,31 +15,31 @@
     ]
   },
   "user": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": true
   },
   "accessToken": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": true
   },
   "userCredential": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": true
   },
   "userIdentity": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": true
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": true
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": true
   }
 }
