@@ -2,7 +2,7 @@
   "backend": {
     "host": "localhost",
     "port": 27017,
-    "url": "mongodb://104.154.26.177:27017/backend?replicaSet=rs0&readConcernLevel=majority&readPreference=nearest",
+    "url": "mongodb://mongo-0.104.154.26.177,mongo-1.104.154.26.177,mongo-2.104.154.26.177:27017/backend?replicaSet=rs0&readConcernLevel=majority&readPreference=nearest",
     "database": "backend",
     "password": "",
     "name": "backend",
