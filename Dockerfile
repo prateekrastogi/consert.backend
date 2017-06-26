@@ -16,7 +16,6 @@ RUN npm install --production
 
 #Finally setting container parameters
 ENV NODE_ENV 'production'
+ENV MONGODB_URL 'mongodb://104.154.26.177:27017/backend?replicaSet=rs0&readConcernLevel=majority&readPreference=nearest'
 EXPOSE 3100
-
-#Passing commands to be run on container start
 CMD [ "npm", "start" ]
