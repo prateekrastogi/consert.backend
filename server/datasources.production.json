@@ -2,7 +2,7 @@
   "backend": {
     "host": "localhost",
     "port": 27017,
-    "url": "${MONGODB_URL}",
+    "url": "mongodb://104.154.26.177:27017/backend?replicaSet=rs0&readConcernLevel=majority&readPreference=nearest",
     "database": "backend",
     "password": "",
     "name": "backend",
@@ -15,12 +15,11 @@
     "index": "backend",
     "hosts": [
       {
-        "host": "elasticsearch",
-        "port": 9200
+        "host": "elastic.consert.live",
+        "port": 80
       }
     ],
     "apiVersion": "5.0",
-    "refreshOn": ["save","create", "updateOrCreate"],
     "defaultSize": 50,
     "log": "trace",
     "requestTimeout": 30000
