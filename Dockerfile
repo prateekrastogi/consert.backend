@@ -18,5 +18,5 @@ RUN npm install --production
 ENV NODE_ENV 'production'
 EXPOSE 3100
 
-#Container Start Prompt
+#Passing commands to be run on container start
 CMD [ "npm", "start" ]
