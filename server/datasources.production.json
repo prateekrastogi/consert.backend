@@ -16,7 +16,7 @@
     "hosts": [
       {
         "host": "elastic.consert.live",
-        "port": 9200
+        "port": 80
       }
     ],
     "apiVersion": "5.0",
