@@ -13,8 +13,8 @@
     "index": "backend",
     "hosts": [
       {
-        "host": "elasticsearch",
-        "port": 9200
+        "host": "http://elasticsearch",
+        "port": 80
       }
     ],
     "apiVersion": "5.0",
