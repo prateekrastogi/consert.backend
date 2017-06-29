@@ -19,7 +19,7 @@
     "loopback-component-explorer": "^4.0.0",
     "loopback-component-passport": "^3.3.0",
     "loopback-connector-es": "^1.4.1",
-    "loopback-connector-mongodb": "^3.1.0",
+    "loopback-connector-mongodb": "^3.2.0",
     "loopback-graphql-relay": "^0.9.3",
     "passport-spotify": "^0.3.1",
     "serve-favicon": "^2.0.1",
