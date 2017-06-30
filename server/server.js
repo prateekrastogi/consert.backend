@@ -5,7 +5,13 @@ var boot = require('loopback-boot');
 var app = module.exports = loopback();
 var appInsights = require('applicationinsights');
 
-appInsights.setup('edab88eb-c6f2-484a-8da8-0cb5aed1e145').start();
+appInsights.setup('112c20e1-83b8-471f-bfb2-9d6988fe5a29')
+  .setAutoDependencyCorrelation(true)
+  .setAutoCollectRequests(true)
+  .setAutoCollectPerformance(true)
+  .setAutoCollectExceptions(true)
+  .setAutoCollectDependencies(true)
+  .start();
 
 // Create an instance of PassportConfigurator with the app instance
 var PassportConfigurator = require('loopback-component-passport').PassportConfigurator;
@@ -25,9 +31,9 @@ try {
   process.exit(1); // fatal
 }
 
-app.start = function() {
+app.start = function () {
   // start the web server
-  return app.listen(function() {
+  return app.listen(function () {
     app.emit('started');
     var baseUrl = app.get('url').replace(/\/$/, '');
     console.log('Web server listening at: %s', baseUrl);
@@ -40,7 +46,7 @@ app.start = function() {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
+boot(app, __dirname, function (err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`
