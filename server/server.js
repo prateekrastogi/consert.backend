@@ -3,6 +3,9 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var app = module.exports = loopback();
+var appInsights = require('applicationinsights');
+
+appInsights.setup('edab88eb-c6f2-484a-8da8-0cb5aed1e145').start();
 
 // Create an instance of PassportConfigurator with the app instance
 var PassportConfigurator = require('loopback-component-passport').PassportConfigurator;
