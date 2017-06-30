@@ -2,16 +2,8 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var Raven = require('raven');
 var app = module.exports = loopback();
-var appInsights = require('applicationinsights');
-
-appInsights.setup('112c20e1-83b8-471f-bfb2-9d6988fe5a29')
-  .setAutoDependencyCorrelation(true)
-  .setAutoCollectRequests(true)
-  .setAutoCollectPerformance(true)
-  .setAutoCollectExceptions(true)
-  .setAutoCollectDependencies(true)
-  .start();
 
 // Create an instance of PassportConfigurator with the app instance
 var PassportConfigurator = require('loopback-component-passport').PassportConfigurator;
@@ -32,6 +24,27 @@ try {
 }
 
 app.start = function() {
+// Must configure Raven before doing anything else with it
+  Raven.config('https://da89c34904be49cb90c23a6239f0ba6b:df39d20a569d40e88897ed8796634c49@sentry.io/185333').install();
+
+// The request handler must be the first middleware on the app
+  app.use(Raven.requestHandler());
+
+  app.get('/', function mainHandler(req, res) {
+    throw new Error('Broke!');
+  });
+
+// The error handler must be before any other error middleware
+  app.use(Raven.errorHandler());
+
+// Optional fallthrough error handler
+  app.use(function onError(err, req, res, next) {
+    // The error id is attached to `res.sentry` to be returned
+    // and optionally displayed to the user for support.
+    res.statusCode = 500;
+    res.end(res.sentry + '\n');
+  });
+
   // start the web server
   return app.listen(function() {
     app.emit('started');
