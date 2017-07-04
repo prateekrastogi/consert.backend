@@ -16,7 +16,7 @@
   },
   "user": {
     "dataSource": "backend",
-    "public": false
+    "public": true
   },
   "accessToken": {
     "dataSource": "backend",
