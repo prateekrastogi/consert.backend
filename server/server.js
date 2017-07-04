@@ -4,7 +4,7 @@ const loopback = require('loopback')
 const boot = require('loopback-boot')
 const app = module.exports = loopback()
 const appInsights = require('applicationinsights')
-const cookieParser = require('cookie-parser')
+const session = require('express-session')
 
 // Setting up application insights only for production
 if (app.get('env') === 'production') {
@@ -15,8 +15,6 @@ if (app.get('env') === 'production') {
     .setAutoCollectExceptions(true)
     .setAutoCollectDependencies(true)
     .start()
-
-  app.use(cookieParser('random-secret', {domain: '.consert.live'}))
 }
 
 // Create an instance of PassportConfigurator with the app instance
@@ -36,6 +34,12 @@ try {
   console.trace(err)
   process.exit(1) // fatal
 }
+app.use(session({
+  secret: 'random-secret',
+  cookie: {
+    domain: '.consert.live'
+  }
+}))
 
 app.start = function () {
   // start the web server
