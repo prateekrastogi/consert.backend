@@ -10,7 +10,7 @@
     "successRedirect": "http://consert.live",
     "failureRedirect": "http://consert.live/login",
     "domain": ".consert.live",
-    "authOptions": {"display": "popup"},
+    "showDialog": true,
     "scope": ["playlist-read-private","playlist-read-collaborative","playlist-modify-public","playlist-modify-private","streaming","user-follow-modify","user-follow-read","user-library-read","user-library-modify","user-read-private","user-read-birthdate","user-read-email","user-top-read"]
   }
 }
