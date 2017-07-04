@@ -4,7 +4,7 @@ const loopback = require('loopback')
 const boot = require('loopback-boot')
 const app = module.exports = loopback()
 const appInsights = require('applicationinsights')
-const session = require('express-session')
+const cookieDomain = require('cookie-domain')
 
 // Setting up application insights only for production
 if (app.get('env') === 'production') {
@@ -34,12 +34,8 @@ try {
   console.trace(err)
   process.exit(1) // fatal
 }
-app.use(session({
-  secret: 'random-secret',
-  cookie: {
-    domain: '.consert.live'
-  }
-}))
+
+app.use(cookieDomain({domain: '.consert.live'}))
 
 app.start = function () {
   // start the web server
