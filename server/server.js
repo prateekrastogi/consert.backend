@@ -4,7 +4,6 @@ const loopback = require('loopback')
 const boot = require('loopback-boot')
 const app = module.exports = loopback()
 const appInsights = require('applicationinsights')
-const session = require('express-session')
 
 // Setting up application insights only for production
 if (app.get('env') === 'production') {
@@ -16,24 +15,6 @@ if (app.get('env') === 'production') {
     .setAutoCollectDependencies(true)
     .start()
 }
-
-app.use(session({
-  secret: 'yoursecret',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    path: '/',
-    domain: 'consert.live'
-  }
-}))
-
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Credentials', true)
-  res.header('Access-Control-Allow-Origin', req.headers.origin)
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
-  next()
-})
 
 // Create an instance of PassportConfigurator with the app instance
 const PassportConfigurator = require('loopback-component-passport').PassportConfigurator

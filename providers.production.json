@@ -9,7 +9,7 @@
     "callbackPath": "/auth/spotify/callback",
     "successRedirect": "http://consert.live",
     "failureRedirect": "http://consert.live/login",
-    "domain": "http://consert.live",
+    "domain": ".consert.live",
     "scope": ["playlist-read-private","playlist-read-collaborative","playlist-modify-public","playlist-modify-private","streaming","user-follow-modify","user-follow-read","user-library-read","user-library-modify","user-read-private","user-read-birthdate","user-read-email","user-top-read"]
   }
 }
