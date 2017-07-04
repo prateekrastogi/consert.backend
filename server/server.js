@@ -16,7 +16,7 @@ if (app.get('env') === 'production') {
     .setAutoCollectDependencies(true)
     .start()
 
-  app.use(cookieParser('random-secret', {domain: 'consert.live'}))
+  app.use(cookieParser('random-secret', {domain: '.consert.live'}))
 }
 
 // Create an instance of PassportConfigurator with the app instance
