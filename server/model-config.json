@@ -41,5 +41,9 @@
   "Role": {
     "dataSource": "backend",
     "public": true
+  },
+  "Genres": {
+    "dataSource": "backend",
+    "public": true
   }
 }
