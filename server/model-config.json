@@ -45,5 +45,13 @@
   "Genres": {
     "dataSource": "backend",
     "public": true
+  },
+  "recommendations": {
+    "dataSource": null,
+    "public": true
+  },
+  "search": {
+    "dataSource": null,
+    "public": true
   }
 }
