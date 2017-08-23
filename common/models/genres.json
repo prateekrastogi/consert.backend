@@ -1,6 +1,6 @@
 {
   "name": "Genres",
-  "base": "PersistedModel",
+  "base": "Model",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -25,6 +25,17 @@
         {
           "path": "/getGenres",
           "verb": "get"
+        }
+      ]
+    },
+    "seedGenreItemsToRecombee": {
+      "accepts": [],
+      "returns": [],
+      "description": "seeds the genres as recombee items to get item based recommendation",
+      "http": [
+        {
+          "path": "/seedGenreItemsToRecombee",
+          "verb": "put"
         }
       ]
     }
