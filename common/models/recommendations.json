@@ -9,5 +9,34 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "getGenreBasedRecommendations": {
+      "accepts": [
+        {
+          "arg": "genres",
+          "type": "array",
+          "required": false,
+          "description": "List of genres for which to get recommendations",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "recommendations",
+          "type": "array",
+          "root": false,
+          "description": "Returned recommendations based on the genres"
+        }
+      ],
+      "description": "gets the recommendation based on genreItems",
+      "http": [
+        {
+          "path": "/getGenreBasedRecommendations",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

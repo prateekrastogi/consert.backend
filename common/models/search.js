@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports = function (Search) {
+module.exports = function (search) {
 
 }
