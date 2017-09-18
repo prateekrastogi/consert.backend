@@ -12,5 +12,4 @@ module.exports = function (recommendations) {
     // TODO
     callback(null, recommendations)
   }
-
 }
