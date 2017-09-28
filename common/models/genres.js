@@ -12,13 +12,13 @@ module.exports = function (Genres) {
    * @param {Function(Error, array)} callback
    */
 
-  Genres.getGenres = function (callback) {
+  Genres.getGenres = function () {
     let genres = ['All']
 
     const genreSerialized = serializeGenres(genresList.genres)
     genres = _.concat(genres, _.sortBy(genreSerialized))
 
-    callback(null, genres)
+    return new Promise((resolve, reject) => resolve(genres))
   }
 
   /**
@@ -26,7 +26,7 @@ module.exports = function (Genres) {
    * @param {Function(Error)} callback
    */
 
-  Genres.seedGenreItemsToRecombee = function (callback) {
+  Genres.seedGenreItemsToRecombee = function () {
     let genres = []
     _.forIn(Object.assign({}, genresList.genres, genresList.spotifyGenres), (value, key) => {
       genres = _.concat(genres, {key, value})
@@ -38,7 +38,7 @@ module.exports = function (Genres) {
       return Rx.Observable.fromPromise(recombeeClient.send(new recombeeRqs.SetItemValues(key, genreItem, {'cascadeCreate': true})))
     }).subscribe(x => console.log(x))
 
-    callback(null)
+    return new Promise()
   }
 
   function convertGenreToRecombeeGenre (genre) {

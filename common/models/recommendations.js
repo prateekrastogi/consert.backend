@@ -7,9 +7,9 @@ module.exports = function (recommendations) {
    * @param {Function(Error, array)} callback
    */
 
-  recommendations.getGenreBasedRecommendations = function (genres, callback) {
+  recommendations.getGenreBasedRecommendations = function (genres) {
     var recommendations
     // TODO
-    callback(null, recommendations)
+    return new Promise((resolve, reject) => resolve(recommendations))
   }
 }

@@ -13,25 +13,26 @@
   },
   "dependencies": {
     "applicationinsights": "^0.22.0",
-    "compression": "^1.7.0",
+    "compression": "^1.7.1",
     "cors": "^2.8.4",
-    "helmet": "^3.8.1",
+    "helmet": "^3.8.2",
     "lodash": "^4.17.4",
-    "loopback": "^3.11.1",
+    "loopback": "^3.13.0",
     "loopback-boot": "^2.26.2",
     "loopback-component-explorer": "^5.1.0",
     "loopback-component-passport": "^3.4.1",
     "loopback-connector-mongodb": "^3.2.1",
-    "loopback-graphql-relay": "^0.9.3",
+    "loopback-graphql-relay": "^0.10.0",
+    "loopback-graphql-server": "^1.1.7",
     "passport-spotify": "^0.3.1",
     "recombee-api-client": "^1.5.0",
     "rxjs": "^5.4.3",
-    "serve-favicon": "^2.4.4",
+    "serve-favicon": "^2.4.5",
     "spotify-web-api-node": "^2.5.0",
     "strong-error-handler": "^2.2.0"
   },
   "devDependencies": {
-    "nsp": "^2.8.0",
+    "nsp": "^2.8.1",
     "standard": "^10.0.3"
   },
   "standard": {
