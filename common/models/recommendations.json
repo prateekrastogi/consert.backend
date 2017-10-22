@@ -20,6 +20,11 @@
           "http": {
             "source": "query"
           }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
         }
       ],
       "returns": [
