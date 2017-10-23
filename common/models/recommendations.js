@@ -1,4 +1,5 @@
 'use strict'
+
 const recombeeClient = require('../../lib/login-assist').recombeeLogin()
 const recombeeRqs = require('recombee-api-client').requests
 
