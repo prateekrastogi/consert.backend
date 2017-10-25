@@ -42,7 +42,7 @@
           "description": "Returned recommendations based on the genres"
         }
       ],
-      "description": "gets the recommendation based on genreItems",
+      "description": "gets the recommendation based on genre Items",
       "http": [
         {
           "path": "/getGenreBasedRecommendations",
