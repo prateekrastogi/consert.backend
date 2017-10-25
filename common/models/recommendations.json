@@ -10,13 +10,13 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "getGenreBasedRecommendations": {
+    "getRecommendations": {
       "accepts": [
         {
-          "arg": "genres",
-          "type": "array",
-          "required": false,
-          "description": "List of genres for which to get recommendations",
+          "arg": "filter",
+          "required": true,
+          "description": "Filters for recommendations",
+          "type": "object",
           "http": {
             "source": "query"
           }
@@ -42,10 +42,10 @@
           "description": "Returned recommendations based on the genres"
         }
       ],
-      "description": "gets the recommendation based on genre Items",
+      "description": "get the recommendations based on filters",
       "http": [
         {
-          "path": "/getGenreBasedRecommendations",
+          "path": "/getRecommendations",
           "verb": "get"
         }
       ]
