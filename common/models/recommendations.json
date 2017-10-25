@@ -22,12 +22,10 @@
           }
         },
         {
-          "arg": "browserId",
-          "type": "string",
-          "required": true,
-          "description": "Unique identity of user's browser",
+         "arg": "req",
+          "type": "object",
           "http": {
-            "source": "query"
+            "source": "req"
           }
         },
         {
