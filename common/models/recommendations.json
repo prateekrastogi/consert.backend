@@ -22,6 +22,15 @@
           }
         },
         {
+          "arg": "browserId",
+          "type": "string",
+          "required": true,
+          "description": "Unique identity of user's browser",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
           "arg": "options",
           "type": "object",
           "http": "optionsFromRequest"
