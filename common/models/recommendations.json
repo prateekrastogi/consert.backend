@@ -22,7 +22,7 @@
           }
         },
         {
-         "arg": "req",
+          "arg": "req",
           "type": "object",
           "http": {
             "source": "req"
@@ -47,6 +47,48 @@
         {
           "path": "/getRecommendations",
           "verb": "get"
+        }
+      ]
+    },
+    "logUserItemInteraction": {
+      "accepts": [
+        {
+          "arg": "itemId",
+          "type": "string",
+          "required": true,
+          "description": "Item Id of the item interacted with",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "action",
+          "type": "string",
+          "required": true,
+          "description": "The type of interaction action performed on that item by that user",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "req",
+          "type": "object",
+          "http": {
+            "source": "req"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [],
+      "description": "Registers the user's interaction with recommended item",
+      "http": [
+        {
+          "path": "/logUserItemInteraction",
+          "verb": "post"
         }
       ]
     }
