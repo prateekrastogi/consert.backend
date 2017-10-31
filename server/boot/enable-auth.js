@@ -5,7 +5,7 @@
 
 module.exports = function enableAuthentication (app) {
   // enable authentication
-  if (app.get('env') === 'production') {
+  if (app.get('env') !== 'production') {
     app.enableAuth()
   }
 }

@@ -2,6 +2,8 @@
 
 const recombeeClient = require('../../lib/login-assist').recombeeLogin()
 const recombeeRqs = require('recombee-api-client').requests
+const cookie = require('cookie')
+const Rx = require('rxjs')
 
 module.exports = function (recommendations) {
   /**
@@ -12,9 +14,8 @@ module.exports = function (recommendations) {
    */
 
   recommendations.getRecommendations = function (filter, req, options) {
+    const userId = getRecombeeUser(req, options)
     var recommendations
-    console.log(JSON.stringify(req.headers.cookie))
-    console.log(JSON.stringify(options))
     // TODO
     return new Promise((resolve, reject) => resolve(recommendations))
   }
@@ -30,5 +31,17 @@ module.exports = function (recommendations) {
   recommendations.logUserItemInteraction = function (itemId, action, req, options) {
     // TODO
     return new Promise()
+  }
+
+  function getRecombeeUser (req, options) {
+    const browserId = cookie.parse(req.headers.cookie).browserId
+    const clientId = cookie.parse(req.headers.cookie).clientId
+    const userId = options.accessToken.userId
+
+    if (clientId) {
+      userId ? console.log('do something') : console.log('do something else')
+    } else {
+      userId ? console.log(`only userid is present ${userId}`) : false
+    }
   }
 }
