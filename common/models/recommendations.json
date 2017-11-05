@@ -91,6 +91,17 @@
           "verb": "post"
         }
       ]
+    },
+    "setUserProperties": {
+      "accepts": [],
+      "returns": [],
+      "description": "sets the userProperties of recombee user type",
+      "http": [
+        {
+          "path": "/setUserProperties",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

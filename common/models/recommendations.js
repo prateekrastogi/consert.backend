@@ -33,6 +33,16 @@ module.exports = function (recommendations) {
     return new Promise()
   }
 
+  /**
+   * sets the userProperties of recombee user type
+   * @param {Function(Error)} callback
+   */
+
+  recommendations.setUserProperties = function (callback) {
+    setUserProperties().subscribe(x => console.log(x), e => console.error(e))
+    callback(null)
+  }
+
   function getRecombeeUser (req, options) {
     const browserId = cookie.parse(req.headers.cookie).browserId
     const clientId = cookie.parse(req.headers.cookie).clientId
@@ -43,5 +53,14 @@ module.exports = function (recommendations) {
     } else {
       userId ? console.log(`only userid is present ${userId}`) : false
     }
+  }
+
+  function setUserProperties () {
+    const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
+    const userType = clientSendAsObservable(new recombeeRqs.AddUserProperty('userType', 'string'))
+    const browserIds = clientSendAsObservable(new recombeeRqs.AddUserProperty('browser-ids', 'set'))
+
+    const result = Rx.Observable.concat(userType, browserIds)
+    return result
   }
 }
