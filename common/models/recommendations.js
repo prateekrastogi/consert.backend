@@ -21,6 +21,15 @@ module.exports = function (recommendations) {
   }
 
   /**
+   * Puts the value of user properties in recombee
+   * @param {object} req Express request object
+   * @param {Function(Error)} callback
+   */
+
+  recommendations.putUserPropertyValues = function (req, options) {
+  }
+
+  /**
    * Registers the user's interaction with recommended item
    * @param {string} itemId Item Id of the item interacted with
    * @param {string} action The type of interaction action performed on that item by that user
@@ -33,34 +42,13 @@ module.exports = function (recommendations) {
     return new Promise()
   }
 
-  /**
-   * sets the userProperties of recombee user type
-   * @param {Function(Error)} callback
-   */
-
-  recommendations.setUserProperties = function (callback) {
-    setUserProperties().subscribe(x => console.log(x), e => console.error(e))
-    callback(null)
-  }
-
   function getRecombeeUser (req, options) {
-    const browserId = cookie.parse(req.headers.cookie).browserId
     const clientId = cookie.parse(req.headers.cookie).clientId
-    const userId = options.accessToken.userId
 
     if (clientId) {
-      userId ? console.log('do something') : console.log('do something else')
+      return options.accessToken ? options.accessToken.userId.toString() : clientId
     } else {
-      userId ? console.log(`only userid is present ${userId}`) : false
+      throw new Error('No Client Id')
     }
-  }
-
-  function setUserProperties () {
-    const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
-    const userType = clientSendAsObservable(new recombeeRqs.AddUserProperty('userType', 'string'))
-    const browserIds = clientSendAsObservable(new recombeeRqs.AddUserProperty('browser-ids', 'set'))
-
-    const result = Rx.Observable.concat(userType, browserIds)
-    return result
   }
 }

@@ -39,7 +39,7 @@
           "arg": "recommendations",
           "type": "array",
           "root": false,
-          "description": "Returned recommendations based on the genres"
+          "description": "Returned recommendations based on the filters"
         }
       ],
       "description": "get the recommendations based on filters",
@@ -92,14 +92,29 @@
         }
       ]
     },
-    "setUserProperties": {
-      "accepts": [],
+    "putUserPropertyValues": {
+      "accepts": [
+        {
+          "arg": "req",
+          "type": "object",
+          "required": true,
+          "description": "Express request object",
+          "http": {
+            "source": "req"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
       "returns": [],
-      "description": "sets the userProperties of recombee user type",
+      "description": "Puts the value of user properties in recombee ",
       "http": [
         {
-          "path": "/setUserProperties",
-          "verb": "post"
+          "path": "/putUserPropertyValues",
+          "verb": "put"
         }
       ]
     }
