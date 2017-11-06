@@ -4,6 +4,7 @@ const recombeeClient = require('../../lib/login-assist').recombeeLogin()
 const recombeeRqs = require('recombee-api-client').requests
 const cookie = require('cookie')
 const Rx = require('rxjs')
+const _ = require('lodash')
 
 module.exports = function (recommendations) {
   /**
@@ -28,7 +29,21 @@ module.exports = function (recommendations) {
 
   recommendations.putUserPropertyValues = function (req, options) {
     const browserId = cookie.parse(req.headers.cookie).browserId
+    const clientId = cookie.parse(req.headers.cookie).clientId
     const userId = getRecombeeUser(req, options)
+
+    const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
+
+    const userGetAndUpdate = clientSendAsObservable(new recombeeRqs.GetUserValues(userId)).retry(3)
+      .catch(err => Rx.Observable.of(getUserUpdates(browserId, clientId, userId)))
+      .concatMap((user) => {
+        const mergedUser = mergerUserUpdates(user, getUserUpdates(browserId, clientId, userId))
+        return clientSendAsObservable(new recombeeRqs.SetUserValues(userId, mergedUser, {'cascadeCreate': true})).retry(3)
+      })
+
+    userGetAndUpdate.subscribe(x => console.log(x), e => console.error(e))
+
+    return new Promise((resolve, reject) => resolve(true))
   }
 
   /**
@@ -42,6 +57,22 @@ module.exports = function (recommendations) {
   recommendations.logUserItemInteraction = function (itemId, action, req, options) {
     // TODO
     return new Promise()
+  }
+
+  function mergerUserUpdates (user, userUpdates) {
+    return _.mergeWith(user, userUpdates, (objVal, srcVal) => {
+      if (_.isArray(objVal)) {
+        return _.compact(_.uniq(objVal.concat(srcVal)))
+      }
+    })
+  }
+
+  function getUserUpdates (browserId, clientId, userId) {
+    const userUpdates = {
+      'userType': `${userId !== clientId ? 'spotify' : 'guest'}`,
+      'browser-ids': [`${browserId}`]
+    }
+    return userUpdates
   }
 
   function getRecombeeUser (req, options) {

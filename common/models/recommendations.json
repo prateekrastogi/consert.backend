@@ -109,7 +109,14 @@
           "http": "optionsFromRequest"
         }
       ],
-      "returns": [],
+      "returns": [
+        {
+          "arg": "isSuccess",
+          "type": "boolean",
+          "root": false,
+          "description": "Returns Whether the operation was success"
+        }
+      ],
       "description": "Puts the value of user properties in recombee ",
       "http": [
         {
