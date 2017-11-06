@@ -27,6 +27,8 @@ module.exports = function (recommendations) {
    */
 
   recommendations.putUserPropertyValues = function (req, options) {
+    const browserId = cookie.parse(req.headers.cookie).browserId
+    const userId = getRecombeeUser(req, options)
   }
 
   /**
