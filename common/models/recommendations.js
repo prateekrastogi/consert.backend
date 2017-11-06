@@ -70,7 +70,7 @@ module.exports = function (recommendations) {
   function getUserUpdates (browserId, clientId, userId) {
     const userUpdates = {
       'userType': `${userId !== clientId ? 'spotify' : 'guest'}`,
-      'browser-ids': [`${browserId}`]
+      'browser-ids': browserId ? [`${browserId}`] : []
     }
     return userUpdates
   }
