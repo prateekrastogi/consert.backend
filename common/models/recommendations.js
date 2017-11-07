@@ -41,9 +41,7 @@ module.exports = function (recommendations) {
         return clientSendAsObservable(new recombeeRqs.SetUserValues(userId, mergedUser, {'cascadeCreate': true})).retry(3)
       })
 
-    userGetAndUpdate.subscribe(x => console.log(x), e => console.error(e))
-
-    return new Promise((resolve, reject) => resolve(true))
+    return new Promise((resolve, reject) => resolve(userGetAndUpdate.toPromise().then(val => val === 'ok')))
   }
 
   /**
