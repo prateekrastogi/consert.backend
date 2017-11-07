@@ -13,9 +13,27 @@
     "getRecommendations": {
       "accepts": [
         {
-          "arg": "filter",
+          "arg": "recType",
+          "type": "string",
           "required": true,
-          "description": "Filters for recommendations",
+          "description": "Type of recommendation i.e. USER_BASED or ITEM_BASED",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "count",
+          "type": "number",
+          "required": true,
+          "description": "Total no. of recommendations to be fetched",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "recParams",
+          "required": true,
+          "description": "Parameters to customize the returned recommendations",
           "type": "object",
           "http": {
             "source": "query"
