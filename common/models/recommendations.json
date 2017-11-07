@@ -71,6 +71,15 @@
           }
         },
         {
+          "arg": "actionParams",
+          "required": true,
+          "description": "Parameters detailing the action",
+          "type": "object",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
           "arg": "req",
           "type": "object",
           "http": {
@@ -83,7 +92,14 @@
           "http": "optionsFromRequest"
         }
       ],
-      "returns": [],
+      "returns": [
+        {
+          "arg": "isSuccess",
+          "type": "boolean",
+          "root": false,
+          "description": "Returns Whether the operation was success"
+        }
+      ],
       "description": "Registers the user's interaction with recommended item",
       "http": [
         {

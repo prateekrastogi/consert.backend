@@ -52,7 +52,24 @@ module.exports = function (recommendations) {
    * @param {object} options object to get accessToken, thus, always, non-fabricated authenticated user object
    */
 
-  recommendations.logUserItemInteraction = function (itemId, action, req, options) {
+  recommendations.logUserItemInteraction = function (itemId, action, actionParams, req, options) {
+    const userId = getRecombeeUser(req, options)
+
+    const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
+
+    switch (_.toUpper(action)) {
+      case 'DETAIL_VIEW':
+        break
+      case 'PURCHASE':
+        break
+      case 'RATING':
+        break
+      case 'CART_ADDITION':
+        break
+      case 'BOOKMARK':
+        break
+    }
+
     // TODO
     return new Promise()
   }
