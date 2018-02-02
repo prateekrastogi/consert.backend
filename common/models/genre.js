@@ -6,13 +6,13 @@ const Rx = require('rxjs')
 const recombeeClient = require('../../lib/login-assist').recombeeLogin()
 const recombeeRqs = require('recombee-api-client').requests
 
-module.exports = function (Genre) {
+module.exports = function (genre) {
   /**
    * gets the list of available Genres available to viewer for filtering recommendations and results
    * @param {Function(Error, array)} callback
    */
 
-  Genre.getGenres = function () {
+  genre.getGenres = function () {
     let genres = ['All']
 
     const genreSerialized = serializeGenres(genresList.genres)
@@ -26,7 +26,7 @@ module.exports = function (Genre) {
    * @param {Function(Error)} callback
    */
 
-  Genre.seedGenreItemsToRecombee = function () {
+  genre.seedGenreItemsToRecombee = function () {
     let genres = []
     _.forIn(Object.assign({}, genresList.genres, genresList.spotifyGenres), (value, key) => {
       genres = _.concat(genres, {key, value})

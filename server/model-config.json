@@ -42,7 +42,7 @@
     "dataSource": "backend",
     "public": true
   },
-  "Genre": {
+  "genre": {
     "dataSource": "backend",
     "public": true
   },
