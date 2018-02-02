@@ -8,7 +8,7 @@ const _ = require('lodash')
 
 const RETRY_COUNT = 3
 
-module.exports = function (recommendations) {
+module.exports = function (recommendation) {
   /**
    * get the recommendation based on filters
    * @param {string} Type of recommendation i.e. USER_BASED or ITEM_BASED
@@ -18,7 +18,7 @@ module.exports = function (recommendations) {
    * @param {object} options object to get accessToken, thus, always, non-fabricated authenticated user object
    */
 
-  recommendations.getRecommendations = function (recType, count, recParams, req, options) {
+  recommendation.getRecommendations = function (recType, count, recParams, req, options) {
     const userId = getRecombeeUser(req, options)
     let recommendationObservable
     const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
@@ -46,7 +46,7 @@ module.exports = function (recommendations) {
    * @param {Function(Error)} callback
    */
 
-  recommendations.putUserPropertyValues = function (req, options) {
+  recommendation.putUserPropertyValues = function (req, options) {
     const browserId = cookie.parse(req.headers.cookie).browserId
     const clientId = cookie.parse(req.headers.cookie).clientId
     const userId = getRecombeeUser(req, options)
@@ -72,7 +72,7 @@ module.exports = function (recommendations) {
    * @param {object} options object to get accessToken, thus, always, non-fabricated authenticated user object
    */
 
-  recommendations.logUserItemInteraction = function (itemId, action, actionParams, req, options) {
+  recommendation.logUserItemInteraction = function (itemId, action, actionParams, req, options) {
     const userId = getRecombeeUser(req, options)
     let actionLoggingObservable
     const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))

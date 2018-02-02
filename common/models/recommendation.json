@@ -1,5 +1,5 @@
 {
-  "name": "recommendations",
+  "name": "recommendation",
   "base": "Model",
   "idInjection": true,
   "options": {

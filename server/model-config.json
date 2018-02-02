@@ -42,11 +42,11 @@
     "dataSource": "backend",
     "public": true
   },
-  "Genres": {
+  "Genre": {
     "dataSource": "backend",
     "public": true
   },
-  "recommendations": {
+  "recommendation": {
     "dataSource": null,
     "public": true
   },

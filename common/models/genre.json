@@ -1,5 +1,5 @@
 {
-  "name": "Genres",
+  "name": "Genre",
   "base": "Model",
   "idInjection": true,
   "options": {
