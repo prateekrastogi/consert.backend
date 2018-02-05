@@ -43,7 +43,7 @@
     "public": true
   },
   "genre": {
-    "dataSource": "backend",
+    "dataSource": null,
     "public": true
   },
   "recommendation": {

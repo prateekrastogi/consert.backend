@@ -25,7 +25,7 @@ module.exports = function (genre) {
    * seeds the genres items to recombee to get item based recommendation
    * @param {Function(Error)} callback
    */
-
+// To do: set item properties in recombee
   genre.seedGenreItemsToRecombee = function () {
     let genres = []
     _.forIn(Object.assign({}, genresList.genres, genresList.spotifyGenres), (value, key) => {
