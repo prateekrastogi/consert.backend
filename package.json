@@ -12,28 +12,31 @@
     "security-check": "nsp check"
   },
   "dependencies": {
-    "applicationinsights": "^1.0.1",
-    "compression": "^1.7.1",
+    "applicationinsights": "^1.0.2",
+    "compression": "^1.7.2",
     "cookie": "^0.3.1",
     "cors": "^2.8.4",
-    "helmet": "^3.9.0",
-    "lodash": "^4.17.4",
-    "loopback": "^3.17.1",
-    "loopback-boot": "^2.27.0",
-    "loopback-component-explorer": "^5.2.0",
-    "loopback-component-passport": "^3.4.1",
-    "loopback-connector-mongodb": "^3.3.1",
+    "elasticsearch": "^14.2.0",
+    "helmet": "^3.12.0",
+    "lodash": "^4.17.5",
+    "loopback": "^3.18.2",
+    "loopback-boot": "^2.27.1",
+    "loopback-component-explorer": "^5.3.0",
+    "loopback-component-passport": "^3.6.0",
+    "loopback-connector-mongodb": "^3.4.1",
     "loopback-graphql-server": "^1.1.7",
-    "passport-spotify": "^0.3.1",
-    "recombee-api-client": "^1.6.0",
-    "rxjs": "^5.5.6",
+    "lru-cache": "^4.1.2",
+    "passport-spotify": "^1.0.0",
+    "ramda": "^0.25.0",
+    "recombee-api-client": "^2.0.0",
+    "rxjs": "^5.5.7",
     "serve-favicon": "^2.4.5",
-    "spotify-web-api-node": "^2.5.0",
-    "strong-error-handler": "^2.3.0"
+    "spotify-web-api-node": "^3.0.0",
+    "strong-error-handler": "^2.3.2"
   },
   "devDependencies": {
-    "nsp": "^3.1.0",
-    "standard": "^10.0.3"
+    "nsp": "^3.2.1",
+    "standard": "^11.0.1"
   },
   "standard": {
     "envs": [
