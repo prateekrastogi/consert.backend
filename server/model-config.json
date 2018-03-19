@@ -42,10 +42,6 @@
     "dataSource": "backend",
     "public": false
   },
-  "genre": {
-    "dataSource": null,
-    "public": true
-  },
   "recommendation": {
     "dataSource": null,
     "public": true
