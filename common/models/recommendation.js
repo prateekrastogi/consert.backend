@@ -8,6 +8,8 @@ const _ = require('lodash')
 
 const RETRY_COUNT = 3
 
+const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
+
 module.exports = function (recommendation) {
   /**
    * get the recommendation based on filters
@@ -22,7 +24,6 @@ module.exports = function (recommendation) {
     const userId = getRecombeeUser(req, options)
     const {itemId} = recParams
     let recommendationObservable
-    const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
 
     switch (_.toUpper(recType)) {
       case 'ITEMS_USER':
@@ -101,6 +102,14 @@ module.exports = function (recommendation) {
     const actionLoggingPromise = actionLoggingObservable.retry(RETRY_COUNT).toPromise()
 
     return new Promise((resolve, reject) => resolve(actionLoggingPromise.then(val => val === 'ok')))
+  }
+
+  recommendation.listItems = function (params) {
+    const listItemsObservable = clientSendAsObservable(new recombeeRqs.ListItems(params))
+
+    const itemsList = listItemsObservable.toPromise()
+
+    return new Promise((resolve, reject) => resolve(itemsList))
   }
 
   function mergeUserUpdates (user, userUpdates) {

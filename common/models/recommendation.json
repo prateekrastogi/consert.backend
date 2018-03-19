@@ -158,6 +158,34 @@
           "verb": "put"
         }
       ]
+    },
+    "listItems": {
+      "accepts": [
+        {
+          "arg": "params",
+          "type": "object",
+          "required": true,
+          "description": "criteria for selecting to be returned  items",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "items",
+          "type": "array",
+          "root": false,
+          "description": "list of items returned"
+        }
+      ],
+      "description": "list the recombee items using passed params. Can be used for listing 'all genre items' etc.",
+      "http": [
+        {
+          "path": "/listItems",
+          "verb": "get"
+        }
+      ]
     }
   }
 }
