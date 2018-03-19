@@ -20,16 +20,22 @@ module.exports = function (recommendation) {
 
   recommendation.getRecommendations = function (recType, count, recParams, req, options) {
     const userId = getRecombeeUser(req, options)
+    const {itemId} = recParams
     let recommendationObservable
     const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
 
     switch (_.toUpper(recType)) {
-      case 'USER_BASED':
-        recommendationObservable = clientSendAsObservable(new recombeeRqs.UserBasedRecommendation(userId, count, recParams))
+      case 'ITEMS_USER':
+        recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendItemsToUser(userId, count, recParams))
         break
-      case 'ITEM_BASED':
-        const {itemId} = recParams
-        recommendationObservable = clientSendAsObservable(new recombeeRqs.ItemBasedRecommendation(itemId, count, _.omit(recParams, 'itemId')))
+      case 'USERS_USER':
+        recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendUsersToUser(userId, count, recParams))
+        break
+      case 'ITEMS_ITEM':
+        recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendItemsToItem(itemId, userId, count, _.omit(recParams, 'itemId')))
+        break
+      case 'USERS_ITEM':
+        recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendUsersToItem(itemId, count, _.omit(recParams, 'itemId')))
         break
       default:
         throw new Error('Invalid Recommendation Type')
