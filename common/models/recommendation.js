@@ -40,12 +40,6 @@ module.exports = function (recommendation) {
     return new Promise((resolve, reject) => resolve(recommendationPromise))
   }
 
-  /**
-   * Puts the value of user properties in recombee
-   * @param {object} req Express request object
-   * @param {Function(Error)} callback
-   */
-
   recommendation.putUserPropertyValues = function (req, options) {
     const browserId = cookie.parse(req.headers.cookie).browserId
     const clientId = cookie.parse(req.headers.cookie).clientId
@@ -56,7 +50,7 @@ module.exports = function (recommendation) {
     const userGetAndUpdate = clientSendAsObservable(new recombeeRqs.GetUserValues(userId)).retry(RETRY_COUNT)
       .catch(err => Rx.Observable.of(getUserUpdates(browserId, clientId, userId)))
       .concatMap((user) => {
-        const mergedUser = mergerUserUpdates(user, getUserUpdates(browserId, clientId, userId))
+        const mergedUser = mergeUserUpdates(user, getUserUpdates(browserId, clientId, userId))
         return clientSendAsObservable(new recombeeRqs.SetUserValues(userId, mergedUser, {'cascadeCreate': true})).retry(RETRY_COUNT)
       })
 
@@ -103,7 +97,7 @@ module.exports = function (recommendation) {
     return new Promise((resolve, reject) => resolve(actionLoggingPromise.then(val => val === 'ok')))
   }
 
-  function mergerUserUpdates (user, userUpdates) {
+  function mergeUserUpdates (user, userUpdates) {
     return _.mergeWith(user, userUpdates, (objVal, srcVal) => {
       if (_.isArray(objVal)) {
         return _.compact(_.uniq(objVal.concat(srcVal)))
