@@ -12,12 +12,8 @@ const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.sen
 
 module.exports = function (recommendation) {
   /**
-   * get the recommendation based on filters
-   * @param {string} Type of recommendation i.e. USER_BASED or ITEM_BASED
-   * @param {number} Total no. of recommendations to be fetched
-   * @param {object} Parameters to customize the returned recommendations
-   * @param {object} express http request object
-   * @param {object} options object to get accessToken, thus, always, non-fabricated authenticated user object
+    @param {req}:  http request object
+    @param {options}: options object to get accessToken, thus, always, non-fabricated authenticated user object
    */
 
   recommendation.getRecommendations = function (recType, count, recParams, req, options) {
@@ -63,15 +59,6 @@ module.exports = function (recommendation) {
 
     return new Promise((resolve, reject) => resolve(userGetAndUpdate.toPromise().then(val => val === 'ok')))
   }
-
-  /**
-   * Registers the user's interaction with recommended item
-   * @param {string} itemId Item Id of the item interacted with
-   * @param {string} action The type of interaction action performed on that item by that user
-   * @param {object} Parameters detailing the action
-   * @param {object} express http request object
-   * @param {object} options object to get accessToken, thus, always, non-fabricated authenticated user object
-   */
 
   recommendation.logUserItemInteraction = function (itemId, action, actionParams, req, options) {
     const userId = getRecombeeUser(req, options)

@@ -16,7 +16,7 @@
           "arg": "recType",
           "type": "string",
           "required": true,
-          "description": "Type of recommendation i.e. USER_BASED or ITEM_BASED",
+          "description": "Type of recommendation i.e. ITEMS_USER, USERS_USER, ITEMS_ITEM, and USERS_ITEM",
           "http": {
             "source": "query"
           }
