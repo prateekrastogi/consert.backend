@@ -57,7 +57,9 @@ module.exports = function (recommendation) {
         return clientSendAsObservable(new recombeeRqs.SetUserValues(userId, mergedUser, {'cascadeCreate': true})).retry(RETRY_COUNT)
       })
 
-    return new Promise((resolve, reject) => resolve(userGetAndUpdate.toPromise().then(val => val === 'ok')))
+      /* Returning empty object coz limitations of graphql adapter as it needs to attach
+      clientMutationId property to the returned object. Thus, no string, boolean, or number datatype */
+    return new Promise((resolve, reject) => resolve(userGetAndUpdate.toPromise().then(val => ({}))))
   }
 
   recommendation.logUserItemInteraction = function (itemId, action, actionParams, req, options) {
@@ -88,7 +90,7 @@ module.exports = function (recommendation) {
 
     const actionLoggingPromise = actionLoggingObservable.retry(RETRY_COUNT).toPromise()
 
-    return new Promise((resolve, reject) => resolve(actionLoggingPromise.then(val => val === 'ok')))
+    return new Promise((resolve, reject) => resolve(actionLoggingPromise.then(val => ({}))))
   }
 
   recommendation.listItems = function (params) {

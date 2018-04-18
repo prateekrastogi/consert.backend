@@ -110,14 +110,7 @@
           "http": "optionsFromRequest"
         }
       ],
-      "returns": [
-        {
-          "arg": "isSuccess",
-          "type": "boolean",
-          "root": false,
-          "description": "Returns Whether the operation was success"
-        }
-      ],
+      "returns": [],
       "description": "Registers the user's interaction with recommended item",
       "http": [
         {
@@ -143,14 +136,7 @@
           "http": "optionsFromRequest"
         }
       ],
-      "returns": [
-        {
-          "arg": "isSuccess",
-          "type": "boolean",
-          "root": false,
-          "description": "Returns Whether the operation was success"
-        }
-      ],
+      "returns": [],
       "description": "Puts the value of user properties in recombee ",
       "http": [
         {
