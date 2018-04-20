@@ -55,7 +55,7 @@
       "returns": [
         {
           "arg": "recommendations",
-          "type": "array",
+          "type": "object",
           "root": false,
           "description": "Returned recommendations based on the filters"
         }
