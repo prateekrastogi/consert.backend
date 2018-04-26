@@ -5,6 +5,7 @@
     "password": "",
     "name": "backend",
     "user": "",
+    "lazyConnect": true,
     "connector": "mongodb"
   }
 }
