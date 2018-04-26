@@ -5,7 +5,7 @@ RUN mkdir -p /backend
 WORKDIR /backend
 
 # Bundle app source
-COPY package.json package-lock.json providers.production.json /backend/
+COPY package.json providers.production.json /backend/
 COPY /client  /backend/client
 COPY /common  /backend/common
 COPY /server  /backend/server
