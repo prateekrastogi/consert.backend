@@ -23,7 +23,7 @@
     "loopback-boot": "^2.27.1",
     "loopback-component-explorer": "^6.0.0",
     "loopback-component-passport": "^3.8.0",
-    "loopback-connector-mongodb": "3.2.0",
+    "loopback-connector-mongodb": "^3.2.0",
     "loopback-graphql-server": "https://github.com/prateekrastogi/loopback-graphql-server.git",
     "passport-spotify": "^1.0.0",
     "ramda": "^0.25.0",
