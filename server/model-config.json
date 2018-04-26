@@ -16,23 +16,23 @@
   },
   "user": {
     "dataSource": "backend",
-    "public": true
+    "public": false
   },
   "accessToken": {
     "dataSource": "backend",
-    "public": true
+    "public": false
   },
   "userCredential": {
     "dataSource": "backend",
-    "public": true
+    "public": false
   },
   "userIdentity": {
     "dataSource": "backend",
-    "public": true
+    "public": false
   },
   "ACL": {
     "dataSource": "backend",
-    "public": true
+    "public": false
   },
   "RoleMapping": {
     "dataSource": "backend",
@@ -40,6 +40,14 @@
   },
   "Role": {
     "dataSource": "backend",
+    "public": false
+  },
+  "recommendation": {
+    "dataSource": null,
+    "public": true
+  },
+  "search": {
+    "dataSource": null,
     "public": true
   }
 }

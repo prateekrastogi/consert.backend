@@ -2,7 +2,7 @@
   "loopback-component-explorer": {
     "mountPath": "/explorer"
   },
-  "loopback-graphql-relay": {
+  "loopback-graphql-server": {
     "path": "/graphql",
     "graphiqlPath": "/graphiql",
     "subscriptionServer": {
@@ -11,10 +11,7 @@
       "options": {},
       "socketOptions": {}
     },
-    "viewer": {
-      "AccessTokenModel": "accessToken",
-      "relation": "user",
-      "UserModel": "user"
-    }
+    "modelMutationGroups": false,
+    "modelQueryGroups": true
   }
 }

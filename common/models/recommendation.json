@@ -1,0 +1,177 @@
+{
+  "name": "recommendation",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "getRecommendations": {
+      "accepts": [
+        {
+          "arg": "recType",
+          "type": "string",
+          "required": true,
+          "description": "Type of recommendation i.e. ITEMS_USER, USERS_USER, ITEMS_ITEM, and USERS_ITEM",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "count",
+          "type": "number",
+          "required": true,
+          "description": "Total no. of recommendations to be fetched",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "recParams",
+          "required": true,
+          "description": "Parameters to customize the returned recommendations",
+          "type": "object",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "req",
+          "type": "object",
+          "http": {
+            "source": "req"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "recommendations",
+          "type": "object",
+          "root": false,
+          "description": "Returned recommendations based on the filters"
+        }
+      ],
+      "description": "get the recommendations based on filters",
+      "http": [
+        {
+          "path": "/getRecommendations",
+          "verb": "get"
+        }
+      ]
+    },
+    "logUserItemInteraction": {
+      "accepts": [
+        {
+          "arg": "itemId",
+          "type": "string",
+          "required": true,
+          "description": "Item Id of the item interacted with",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "action",
+          "type": "string",
+          "required": true,
+          "description": "The type of interaction action performed on that item by that user",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "actionParams",
+          "required": true,
+          "description": "Parameters detailing the action",
+          "type": "object",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "req",
+          "type": "object",
+          "http": {
+            "source": "req"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [],
+      "description": "Registers the user's interaction with recommended item",
+      "http": [
+        {
+          "path": "/logUserItemInteraction",
+          "verb": "post"
+        }
+      ]
+    },
+    "putUserPropertyValues": {
+      "accepts": [
+        {
+          "arg": "req",
+          "type": "object",
+          "required": true,
+          "description": "Express request object",
+          "http": {
+            "source": "req"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [],
+      "description": "Puts the value of user properties in recombee ",
+      "http": [
+        {
+          "path": "/putUserPropertyValues",
+          "verb": "put"
+        }
+      ]
+    },
+    "listItems": {
+      "accepts": [
+        {
+          "arg": "params",
+          "type": "object",
+          "required": true,
+          "description": "criteria for selecting to be returned  items",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "items",
+          "type": "array",
+          "root": false,
+          "description": "list of items returned"
+        }
+      ],
+      "description": "list the recombee items using passed params. Can be used for listing 'all genre items' etc.",
+      "http": [
+        {
+          "path": "/listItems",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

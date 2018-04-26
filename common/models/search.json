@@ -1,0 +1,42 @@
+{
+  "name": "search",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "search": {
+      "accepts": [
+        {
+          "arg": "params",
+          "type": "object",
+          "required": true,
+          "description": "Parameters to be used for filtering search results",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "searchResults",
+          "type": "array",
+          "root": false,
+          "description": "Returned search results based on filters"
+        }
+      ],
+      "description": "get the search results based on filters",
+      "http": [
+        {
+          "path": "/search",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}
