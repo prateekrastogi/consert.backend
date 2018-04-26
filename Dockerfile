@@ -12,7 +12,10 @@ COPY /server  /backend/server
 COPY /lib  /backend/lib
 
 # Install app dependencies
-RUN npm install --production
+RUN apk add --no-cache \
+    git \
+    && npm install --production \
+    && apk del git
 
 #Finally setting container parameters
 ENV NODE_ENV 'production'
