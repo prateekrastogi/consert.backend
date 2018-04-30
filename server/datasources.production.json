@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "backend": {
-    "url": "mongodb://mongocxzczxc:27017/backend?replicaSet=rs0&readConcernLevel=majority&readPreference=secondaryPreferred",
+    "url": "mongodb://mongo-mongodb-replicaset:27017/backend?replicaSet=rs0&readConcernLevel=majority&readPreference=secondaryPreferred",
     "database": "backend",
     "password": "",
     "name": "backend",
