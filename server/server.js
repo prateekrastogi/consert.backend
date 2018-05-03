@@ -3,18 +3,6 @@
 const loopback = require('loopback')
 const boot = require('loopback-boot')
 const app = module.exports = loopback()
-const appInsights = require('applicationinsights')
-
-// Setting up application insights only for production
-if (app.get('env') === 'production') {
-  appInsights.setup('b0668788-e520-48d6-ba26-805781b8e251')
-    .setAutoDependencyCorrelation(true)
-    .setAutoCollectRequests(true)
-    .setAutoCollectPerformance(true)
-    .setAutoCollectExceptions(true)
-    .setAutoCollectDependencies(true)
-    .start()
-}
 
 // Create an instance of PassportConfigurator with the app instance
 const PassportConfigurator = require('loopback-component-passport').PassportConfigurator
