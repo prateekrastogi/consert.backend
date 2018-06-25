@@ -3,7 +3,7 @@
 const recombeeClient = require('../../lib/login-assist').recombeeLogin()
 const recombeeRqs = require('recombee-api-client').requests
 const cookie = require('cookie')
-const Rx = require('rxjs')
+const Rx = require('rxjs-compat')
 const _ = require('lodash')
 
 const RETRY_COUNT = 3

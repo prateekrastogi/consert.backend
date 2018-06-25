@@ -1,6 +1,6 @@
 'use strict'
 
-const Rx = require('rxjs')
+const Rx = require('rxjs-compat')
 const R = require('ramda')
 const elasticClient = require('../../lib/login-assist').elasticLogin()
 
