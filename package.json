@@ -8,8 +8,7 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "start": "node .",
-    "security-check": "nsp check"
+    "start": "node ."
   },
   "dependencies": {
     "compression": "^1.7.2",
@@ -33,7 +32,6 @@
     "strong-error-handler": "^2.3.2"
   },
   "devDependencies": {
-    "nsp": "^3.2.1",
     "standard": "^11.0.1"
   },
   "standard": {
