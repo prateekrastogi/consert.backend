@@ -25,14 +25,14 @@ module.exports = function (recommendation) {
     switch (_.toUpper(recType)) {
       case 'ITEMS_USER':
         recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendItemsToUser(userId, count, recParams))
-          .pluck('recomms').map(recomms => R.map(convertRecombeeResponseItemToMediaItem, recomms))
+          .pluck('recomms').map(recomms => R.map(convertRecombeeResponseItemToCommonMediaItem, recomms))
         break
       case 'USERS_USER':
         recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendUsersToUser(userId, count, recParams))
         break
       case 'ITEMS_ITEM':
         recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendItemsToItem(itemId, userId, count, _.omit(recParams, 'itemId')))
-          .pluck('recomms').map(recomms => R.map(convertRecombeeResponseItemToMediaItem, recomms))
+          .pluck('recomms').map(recomms => R.map(convertRecombeeResponseItemToCommonMediaItem, recomms))
         break
       case 'USERS_ITEM':
         recommendationObservable = clientSendAsObservable(new recombeeRqs.RecommendUsersToItem(itemId, count, _.omit(recParams, 'itemId')))
@@ -130,11 +130,11 @@ module.exports = function (recommendation) {
     }
   }
 
-  // Can also write conversion functions for recombee's genreItem, artistItem, and user if needed
-  function convertRecombeeResponseItemToMediaItem (recombeeResponseItem) {
+  // Can also write SPECIFIC conversion functions for recombee's genreItem, artistItem, and mediaItem, if needed.
+  function convertRecombeeResponseItemToCommonMediaItem (recombeeResponseItem) {
     const {id, values: recombeeItem = {}} = recombeeResponseItem
     const mediaItem = {
-      id: id,
+      id: id, // added field
       itemType: recombeeItem.itemType,
       kind: recombeeItem.kind,
       etag: recombeeItem.etag,
@@ -179,7 +179,7 @@ module.exports = function (recommendation) {
         activeLiveChatId: recombeeItem['liveStreamingDetails-activeLiveChatId']
       },
       ArtistsIds: recombeeItem['artists-ids'],
-      ArtistsGenres: recombeeItem['genres'],
+      genres: recombeeItem['genres'], // differ from mediaItem
       ArtistsNames: recombeeItem['artists-names'],
       ArtistsPopularity: _.map(recombeeItem['artists-popularity'], popularity => parseInt(popularity)),
       ArtistsFollowers: _.map(recombeeItem['artists-followers'], followers => parseInt(followers)),
