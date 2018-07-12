@@ -49,5 +49,9 @@
   "search": {
     "dataSource": null,
     "public": true
+  },
+  "app-metadata": {
+    "dataSource": null,
+    "public": true
   }
 }
