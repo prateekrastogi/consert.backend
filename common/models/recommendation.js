@@ -18,7 +18,7 @@ module.exports = function (recommendation) {
    */
 
   recommendation.getRecommendations = function (recType, count, recParams, req, options) {
-    const userId = getRecombeeUser(req, options)
+    const userId = getUniqueUserId(req, options)
     const {itemId} = recParams
     let recommendationObservable
 
@@ -49,7 +49,7 @@ module.exports = function (recommendation) {
   recommendation.putUserPropertyValues = function (req, options) {
     const browserId = cookie.parse(req.headers.cookie).browserId
     const clientId = cookie.parse(req.headers.cookie).clientId
-    const userId = getRecombeeUser(req, options)
+    const userId = getUniqueUserId(req, options)
 
     const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
 
@@ -66,7 +66,7 @@ module.exports = function (recommendation) {
   }
 
   recommendation.logUserItemInteraction = function (itemId, action, actionParams, req, options) {
-    const userId = getRecombeeUser(req, options)
+    const userId = getUniqueUserId(req, options)
     let actionLoggingObservable
     const clientSendAsObservable = Rx.Observable.bindNodeCallback(recombeeClient.send.bind(recombeeClient))
 
@@ -120,7 +120,7 @@ module.exports = function (recommendation) {
     return userUpdates
   }
 
-  function getRecombeeUser (req, options) {
+  function getUniqueUserId (req, options) {
     const clientId = cookie.parse(req.headers.cookie).clientId
 
     if (clientId) {
