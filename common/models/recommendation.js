@@ -12,7 +12,7 @@ module.exports = function (recommendation) {
   recommendation.getContextualRecommmendations = function (context, req, options) {
     const userId = getUniqueUserId(req, options)
 
-    const recommendationPromise = recommendationDelegate.getContextualRecommmendations(userId, ...context)
+    const recommendationPromise = recommendationDelegate.getContextualRecommmendations({userId, ...context})
       .toPromise()
 
     return new Promise((resolve, reject) => resolve(recommendationPromise))

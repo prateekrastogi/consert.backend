@@ -27,7 +27,6 @@
     "ramda": "^0.25.0",
     "recombee-api-client": "^2.1.0",
     "rxjs": "^6.2.1",
-    "rxjs-compat": "^6.2.1",
     "serve-favicon": "^2.5.0",
     "spotify-web-api-node": "^3.1.1",
     "strong-error-handler": "^3.0.0"
