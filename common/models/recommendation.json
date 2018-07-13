@@ -10,30 +10,12 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "getRecommendations": {
+    "getContextualRecommmendations": {
       "accepts": [
         {
-          "arg": "recType",
-          "type": "string",
+          "arg": "context",
           "required": true,
-          "description": "Type of recommendation i.e. ITEMS_USER, USERS_USER, ITEMS_ITEM, and USERS_ITEM",
-          "http": {
-            "source": "query"
-          }
-        },
-        {
-          "arg": "count",
-          "type": "number",
-          "required": true,
-          "description": "Total no. of recommendations to be fetched",
-          "http": {
-            "source": "query"
-          }
-        },
-        {
-          "arg": "recParams",
-          "required": true,
-          "description": "Parameters to customize the returned recommendations",
+          "description": "Context in which recommendation has to be returned",
           "type": "object",
           "http": {
             "source": "query"
@@ -71,27 +53,9 @@
     "logUserItemInteraction": {
       "accepts": [
         {
-          "arg": "itemId",
-          "type": "string",
+          "arg": "interaction",
           "required": true,
-          "description": "Item Id of the item interacted with",
-          "http": {
-            "source": "query"
-          }
-        },
-        {
-          "arg": "action",
-          "type": "string",
-          "required": true,
-          "description": "The type of interaction action performed on that item by that user",
-          "http": {
-            "source": "query"
-          }
-        },
-        {
-          "arg": "actionParams",
-          "required": true,
-          "description": "Parameters detailing the action",
+          "description": "Interaction object that needs to be logged",
           "type": "object",
           "http": {
             "source": "query"
@@ -119,7 +83,7 @@
         }
       ]
     },
-    "putUserPropertyValues": {
+    "putUserProperties": {
       "accepts": [
         {
           "arg": "req",
