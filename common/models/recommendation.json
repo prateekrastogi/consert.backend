@@ -10,7 +10,7 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "getContextualRecommmendations": {
+    "getRecommmendations": {
       "accepts": [
         {
           "arg": "context",
@@ -39,10 +39,10 @@
           "arg": "recommendations",
           "type": "object",
           "root": false,
-          "description": "Returned recommendations based on the filters"
+          "description": "Returned recommendations based on the context"
         }
       ],
-      "description": "get the recommendations based on filters",
+      "description": "get the recommendations based on context",
       "http": [
         {
           "path": "/getRecommendations",

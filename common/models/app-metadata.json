@@ -1,13 +1,94 @@
 {
-  "name": "appMetadata",
-  "base": "Model",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {},
-  "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+    "name": "appMetadata",
+    "base": "Model",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {},
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {
+        "getTags": {
+            "accepts": [
+                {
+                    "arg": "context",
+                    "required": true,
+                    "description": "Context in which tags has to be returned",
+                    "type": "object",
+                    "http": {
+                        "source": "query"
+                    }
+                },
+                {
+                    "arg": "req",
+                    "type": "object",
+                    "http": {
+                        "source": "req"
+                    }
+                },
+                {
+                    "arg": "options",
+                    "type": "object",
+                    "http": "optionsFromRequest"
+                }
+            ],
+            "returns": [
+                {
+                    "arg": "tags",
+                    "type": "array",
+                    "root": false,
+                    "description": "Returned context-based tags "
+                }
+            ],
+            "description": "get context-based tags",
+            "http": [
+                {
+                    "path": "/getTags",
+                    "verb": "get"
+                }
+            ]
+        },
+        "getStationTags": {
+          "accepts": [
+              {
+                  "arg": "context",
+                  "required": true,
+                  "description": "Context in which station tags has to be returned",
+                  "type": "object",
+                  "http": {
+                      "source": "query"
+                  }
+              },
+              {
+                  "arg": "req",
+                  "type": "object",
+                  "http": {
+                      "source": "req"
+                  }
+              },
+              {
+                  "arg": "options",
+                  "type": "object",
+                  "http": "optionsFromRequest"
+              }
+          ],
+          "returns": [
+              {
+                  "arg": "stationTags",
+                  "type": "array",
+                  "root": false,
+                  "description": "Returned context-based radio station tags "
+              }
+          ],
+          "description": "get context-based radio station tags",
+          "http": [
+              {
+                  "path": "/getStationTags",
+                  "verb": "get"
+              }
+          ]
+      }
+    }
 }
