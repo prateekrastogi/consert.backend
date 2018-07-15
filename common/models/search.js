@@ -2,7 +2,7 @@
 
 const R = require('ramda')
 const elasticClient = require('../../lib/login-assist').elasticLogin()
-const {map, concatMap} = require('rxjs/operators')
+const {map, concatMap, retry} = require('rxjs/operators')
 const { from, bindNodeCallback } = require('rxjs')
 
 const RETRY_COUNT = 3
@@ -15,7 +15,7 @@ module.exports = function (search) {
         concatMap(results => from(results))
       )
 
-    const searchResultPromise = searchResultObservable.retry(RETRY_COUNT).toPromise()
+    const searchResultPromise = searchResultObservable.pipe(retry(RETRY_COUNT)).toPromise()
 
     return new Promise((resolve, reject) => resolve(searchResultPromise))
   }
