@@ -14,7 +14,7 @@
             "accepts": [
                 {
                     "arg": "context",
-                    "required": true,
+                    "required": false,
                     "description": "Context in which tags has to be returned",
                     "type": "object",
                     "http": {
@@ -54,7 +54,7 @@
           "accepts": [
               {
                   "arg": "context",
-                  "required": true,
+                  "required": false,
                   "description": "Context in which station tags has to be returned",
                   "type": "object",
                   "http": {

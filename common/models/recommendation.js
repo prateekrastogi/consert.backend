@@ -9,7 +9,7 @@ module.exports = function (recommendation) {
     @param {options}: options object to get accessToken, thus, always, non-fabricated authenticated user object
    */
 
-  recommendation.getRecommmendations = function (context, req, options) {
+  recommendation.getRecommmendations = function (context = {}, req, options) {
     const userId = getUniqueUserId(req, options)
 
     const recommendationPromise = recommendationDelegate.getRecommmendations({userId, ...context})
