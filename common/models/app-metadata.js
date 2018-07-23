@@ -2,24 +2,36 @@
 
 const recommendationDelegate = require('../../lib/recommendation-delegate')
 
-const RETRY_COUNT = 3
-
 let tags = []
 
 module.exports = function (appMetadata) {
   appMetadata.getTags = function (context = {}, req, options) {
-    if (tags.length === 0) {
-      const params = {
-        filter: `${"'itemType' == \"genre\""}`   // eslint-disable-line
-      }
-
-      const genreItems = recommendationDelegate.listItems(params)
+    const params = {
+      filter: `${"'itemType' == \"genre\""}`,
+      returnProperties: true
     }
 
-    return new Promise((resolve, reject) => resolve(genreItems.toPromise()))
+    const genreItems = tags.length ? tags : recommendationDelegate.listItems(params).toPromise().then(items => {
+      tags.push(items)
+      return items
+    })
+
+    return new Promise((resolve, reject) => resolve(genreItems))
   }
 
   appMetadata.getStationTags = function (context = {}, req, options) {
-    return new Promise((resolve, reject) => resolve(['Popular', 'Shuffle', 'Trending']))
+    return new Promise((resolve, reject) => resolve([{
+      id: 'Popular',
+      itemType: 'radio',
+      snippet: { thumbnails: '{}' }
+    }, {
+      id: 'Shuffle',
+      itemType: 'radio',
+      snippet: { thumbnails: '{}' }
+    }, {
+      id: 'Trending',
+      itemType: 'radio',
+      snippet: { thumbnails: '{}' }
+    }]))
   }
 }
