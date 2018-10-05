@@ -2,7 +2,7 @@
 
 const R = require('ramda')
 const elasticClient = require('../../lib/login-assist').elasticLogin()
-const {map, concatMap, retry} = require('rxjs/operators')
+const { map, concatMap, retry } = require('rxjs/operators')
 const { from, bindNodeCallback } = require('rxjs')
 
 const RETRY_COUNT = 3

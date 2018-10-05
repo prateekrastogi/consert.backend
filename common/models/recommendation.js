@@ -12,7 +12,7 @@ module.exports = function (recommendation) {
   recommendation.getRecommmendations = function (context = {}, req, options) {
     const userId = getUniqueUserId(req, options)
 
-    const recommendationPromise = recommendationDelegate.getRecommmendations({userId, ...context})
+    const recommendationPromise = recommendationDelegate.getRecommmendations({ userId, ...context })
       .toPromise()
 
     return new Promise((resolve, reject) => resolve(recommendationPromise))

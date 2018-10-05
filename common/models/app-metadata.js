@@ -7,7 +7,7 @@ let tags = []
 
 module.exports = function (appMetadata) {
   appMetadata.getTags = async function (context = {}, req, options) {
-    const {serialized = true, ...tagContext} = context
+    const { serialized = true, ...tagContext } = context
     const params = {
       filter: `${"'itemType' == \"genre\""}`,
       returnProperties: true
@@ -22,11 +22,11 @@ module.exports = function (appMetadata) {
     return new Promise((resolve, reject) => resolve(tagItems))
 
     function contextualizedTags (tagContext, tagItems) {
-      const {route} = tagContext
+      const { route } = tagContext
       let filteredTags
 
       function filter (itemId, item) {
-        const {id} = item
+        const { id } = item
         return (id === itemId)
       }
 
@@ -87,7 +87,7 @@ module.exports = function (appMetadata) {
     }]))
   }
 
-  function serializeGenre ({...genre}) {
+  function serializeGenre ({ ...genre }) {
     if (genre.childrenItems) {
       const serializedGenres = R.map(
         R.compose(R.replace(/Comma/g, ','), R.replace(/And/g, '&'), R.replace(/Dash/g, '-'), R.replace(/Space/g, ' '))
