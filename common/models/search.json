@@ -11,7 +11,7 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "search": {
+    "getSearchResults": {
       "accepts": [
         {
           "arg": "params",
@@ -34,7 +34,7 @@
       "description": "get the search results based on filters",
       "http": [
         {
-          "path": "/search",
+          "path": "/getSearchResults",
           "verb": "get"
         }
       ]

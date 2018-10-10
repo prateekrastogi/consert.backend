@@ -8,7 +8,7 @@ const { from, bindNodeCallback } = require('rxjs')
 const RETRY_COUNT = 3
 
 module.exports = function (search) {
-  search.search = function (params) {
+  search.getSearchResults = function (params) {
     const searchObservable = bindNodeCallback(elasticClient.search.bind(elasticClient))
     const searchResultObservable = searchObservable(params)
       .pipe(map(R.compose(R.pluck('hits'), R.pluck('hits'), R.filter(R.has('hits')))),
