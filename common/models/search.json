@@ -1,5 +1,6 @@
 {
   "name": "search",
+  "plural": "search",
   "base": "Model",
   "idInjection": true,
   "options": {

@@ -42,7 +42,7 @@
     "dataSource": "backend",
     "public": false
   },
-  "recommendation": {
+  "recommender": {
     "dataSource": null,
     "public": true
   },

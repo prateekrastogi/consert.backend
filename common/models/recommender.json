@@ -1,5 +1,6 @@
 {
-  "name": "recommendation",
+  "name": "recommender",
+  "plural": "recommender",
   "base": "Model",
   "idInjection": true,
   "options": {

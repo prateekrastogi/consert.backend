@@ -3,13 +3,13 @@
 const recommendationDelegate = require('../../lib/recommendation-delegate')
 const cookie = require('cookie')
 
-module.exports = function (recommendation) {
+module.exports = function (recommender) {
   /**
     @param {req}:  http request object
     @param {options}: options object to get accessToken, thus, always, non-fabricated authenticated user object
    */
 
-  recommendation.getRecommmendations = function (context = {}, req, options) {
+  recommender.getRecommmendations = function (context = {}, req, options) {
     const userId = getUniqueUserId(req, options)
 
     const recommendationPromise = recommendationDelegate.getRecommmendations({ userId, ...context })
@@ -18,7 +18,7 @@ module.exports = function (recommendation) {
     return new Promise((resolve, reject) => resolve(recommendationPromise))
   }
 
-  recommendation.putUserProperties = function (req, options) {
+  recommender.putUserProperties = function (req, options) {
     const browserId = cookie.parse(req.headers.cookie).browserId
     const clientId = cookie.parse(req.headers.cookie).clientId
     const userId = getUniqueUserId(req, options)
@@ -30,7 +30,7 @@ module.exports = function (recommendation) {
     return new Promise((resolve, reject) => resolve(userUpdater.toPromise().then(val => ({}))))
   }
 
-  recommendation.logUserItemInteraction = function (interaction, req, options) {
+  recommender.logUserItemInteraction = function (interaction, req, options) {
     const userId = getUniqueUserId(req, options)
 
     const userItemInteractionLogger = recommendationDelegate.logUserItemInteraction(interaction, userId)
@@ -38,7 +38,7 @@ module.exports = function (recommendation) {
     return new Promise((resolve, reject) => resolve(userItemInteractionLogger.toPromise().then(val => ({}))))
   }
 
-  recommendation.listItems = function (params) {
+  recommender.listItems = function (params) {
     const itemsList = recommendationDelegate.listItems(params).toPromise()
 
     return new Promise((resolve, reject) => resolve(itemsList))
