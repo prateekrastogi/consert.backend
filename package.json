@@ -6,9 +6,10 @@
     "node": ">=4"
   },
   "scripts": {
+    "dev": "nodemon .",
+    "start": "node .",
     "lint": "standard",
-    "lint-fix": "standard --fix",
-    "start": "node ."
+    "lint-fix": "standard --fix"
   },
   "dependencies": {
     "compression": "^1.7.3",
@@ -34,6 +35,7 @@
     "strong-error-handler": "^3.2.0"
   },
   "devDependencies": {
+    "nodemon": "^1.18.4",
     "standard": "^12.0.1"
   },
   "standard": {
