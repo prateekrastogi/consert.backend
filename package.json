@@ -7,13 +7,14 @@
   },
   "scripts": {
     "dev": "nodemon --inspect=0.0.0.0:3101 .",
-    "start": "node .",
+    "start": "cross-env NODE_ENV=production node .",
     "lint": "standard --fix"
   },
   "dependencies": {
     "compression": "^1.7.3",
     "cookie": "^0.3.1",
     "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
     "elasticsearch": "^15.1.1",
     "helmet": "^3.14.0",
     "lodash": "^4.17.11",
